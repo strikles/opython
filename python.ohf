@@ -1,0 +1,116 @@
+##f$allin##
+
+
+
+##f$betpot_1_1##
+
+
+
+##f$betpot_1_2##
+
+
+
+##f$betsize##
+// Betsize in dollars, raise-to semantics.
+// OpenHoldem will auto-adapt the betsize to the casinos input-requirements.
+// Please define your tablemaps "betsizeinterpretationmethod"
+// to configure this feature.
+
+
+##f$raise##
+
+
+
+##f$call##
+
+
+
+##f$sitin##
+
+
+
+##f$sitout##
+
+
+
+##f$leave##
+
+
+
+##f$prefold##
+
+
+
+##f$chat##
+
+
+
+##f$delay##
+// Autoplayer-delay in milli-seconds
+0
+
+
+##f$ini_function_on_connection##
+0
+
+
+##f$ini_function_on_handreset##
+0
+
+
+##f$ini_function_on_new_round##
+0
+
+
+##f$ini_function_on_my_turn##
+isfinalanswer ? me_st_dec_f$dlldecision : 0
+
+
+##f$ini_function_on_heartbeat##
+0
+
+
+##f$test##
+0
+
+
+##f$debug##
+= userchair
+= AmountToCall
+= dll$random
+
+
+##list_random_crap##
+KK JJ 66 33
+A8s A3s KTs K7s K4s Q8s Q7s Q3s J8s J5s T7s 96s 94s 93s 85s 82s 63s 53s
+A6o KTo K8o K5o QJo Q8o Q3o JTo J5o T6o 92o 87o 85o 84o 62o 43o
+
+
+##f$preflop##
+WHEN (me_re_dec - currentbet - call > 0) RaiseTo me_re_dec FORCE
+WHEN (me_re_dec - currentbet - call == 0) OR (call == balance AND me_re_dec > currentbet) Call FORCE
+WHEN Others Fold FORCE
+
+
+##f$flop##
+WHEN (me_re_dec - currentbet - call > 0) RaiseTo me_re_dec FORCE
+WHEN (me_re_dec - currentbet - call == 0) OR (call == balance AND me_re_dec > currentbet) Call FORCE
+WHEN Others Fold FORCE
+
+
+##f$turn##
+WHEN (me_re_dec - currentbet - call > 0) RaiseTo me_re_dec FORCE
+WHEN (me_re_dec - currentbet - call == 0) OR (call == balance AND me_re_dec > currentbet) Call FORCE
+WHEN Others Fold FORCE
+
+
+##f$river##
+WHEN (me_re_dec - currentbet - call > 0) RaiseTo me_re_dec FORCE
+WHEN (me_re_dec - currentbet - call == 0) OR (call == balance AND me_re_dec > currentbet) Call FORCE
+WHEN Others Fold FORCE
+
+
+##f$dlldecision##
+dll$decision
+
+
