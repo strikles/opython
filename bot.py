@@ -61,13 +61,13 @@ class Main:
         print(f'phr: {self.phr}\n')
         if 0.95 < self.phr:
             if self.timesActed() == 0:
-                decision = (self.oh["currentbet"] + min(self.oh["balance"], self.oh["call"] + max(self.oh["pot"], 4.0*self.oh["bblind"]))) / self.oh["bblind"]
+                decision = OpenHoldem.getSymbol("RaiseHalfPot")
             else:
-                decision = (self.oh["currentbet"] + self.oh["balance"]) / self.oh["bblind"]
+                decision = OpenHoldem.getSymbol("RaiseMax")
             print('-> 0.95\n')
         elif 0.85 < self.phr and self.oh["call"] <= 13.0*self.oh["bblind"]:
             if self.timesActed() == 0:
-                decision = (self.oh["currentbet"] + min(self.oh["balance"], self.oh["call"] + max(self.oh["pot"]/2.0, 4.0*self.oh["bblind"]))) / self.oh["bblind"]
+                decision = OpenHoldem.getSymbol("RaiseHalfPot")
             else:
                 decision = OpenHoldem.getSymbol("Call")
             print('-> 0.85\n')
@@ -82,17 +82,14 @@ class Main:
         min_bet = max(2.0*self.oh["call"], self.oh["bblind"])
         if 0.40 < self.oh["prwin"] - self.inv:
             if self.timesActed() == 0:
-                decision = (self.oh["currentbet"] + min(self.oh["balance"], self.oh["call"] + max(min_bet, self.oh["pot"]))) / self.oh["bblind"]
+                decision = OpenHoldem.getSymbol("RaisePot")
             else:
-                decision = (self.oh["currentbet"] + self.oh["balance"]) / self.oh["bblind"]
-            print('Big Raise')
+                decision = OpenHoldem.getSymbol("RaiseMax")
         elif 0.1 < self.oh["prwin"] - self.inv and math.isclose(0, self.oh["call"], rel_tol=1e-6) and self.gotcaught == False:
-            decision = (self.oh["currentbet"] + min(self.oh["balance"], self.oh["call"] + max(min_bet, self.oh["pot"]/2.0))) / self.oh["bblind"]
-            print('small raise')
+            decision = OpenHoldem.getSymbol("RaiseHalfPot")
             self.ibluffed = True
         elif self.oh["call"] < self.callExpectedValue():
             decision = OpenHoldem.getSymbol("Call")
-            print('just calling')
         return decision
 
     def getDecision(self):
