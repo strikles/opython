@@ -61,37 +61,38 @@ class Main:
         print(f'phr: {self.phr}\n')
         if 0.95 < self.phr:
             if self.timesActed() == 0:
-                decision = self.oh["call"] + max(self.oh["pot"], 4*self.oh["bblind"])
+                decision = (self.oh["currentbet"] + min(self.oh["balance"], self.oh["call"] + max(self.oh["pot"], 4.0*self.oh["bblind"]))) / self.oh["bblind"]
             else:
-                decision = self.oh["balance"]
+                decision = (self.oh["currentbet"] + self.oh["balance"]) / self.oh["bblind"]
             print('-> 0.95\n')
-        elif 0.85 < self.phr and self.oh["call"] <= 30*self.oh["bblind"]:
+        elif 0.85 < self.phr and self.oh["call"] <= 13.0*self.oh["bblind"]:
             if self.timesActed() == 0:
-                decision = self.oh["call"] + max(self.oh["pot"]/2, 4*self.oh["bblind"])
+                decision = (self.oh["currentbet"] + min(self.oh["balance"], self.oh["call"] + max(self.oh["pot"]/2.0, 4.0*self.oh["bblind"]))) / self.oh["bblind"]
             else:
-                decision = self.oh["call"]
+                decision = OpenHoldem.getSymbol("Call")
             print('-> 0.85\n')
-        elif 0.70 < self.phr and self.oh["call"] <= 10*self.oh["bblind"]:
+        elif 0.70 < self.phr and self.oh["call"] <= 3.0*self.oh["bblind"]:
             if self.timesActed() == 0:
-                decision = self.oh["call"]
+                decision = OpenHoldem.getSymbol("Call")
             print('-> 0.70\n')
-        decision = self.oh["currentbet"] + min(self.oh["balance"], decision)
         return decision
 
     def postFlopDecision(self):
         decision = 0.0
-        min_bet = max(2*self.oh["call"], self.oh["bblind"])
+        min_bet = max(2.0*self.oh["call"], self.oh["bblind"])
         if 0.40 < self.oh["prwin"] - self.inv:
             if self.timesActed() == 0:
-                decision = self.oh["call"] + max(min_bet, self.oh["pot"])
+                decision = (self.oh["currentbet"] + min(self.oh["balance"], self.oh["call"] + max(min_bet, self.oh["pot"]))) / self.oh["bblind"]
             else:
-                decision = self.oh["balance"]
+                decision = (self.oh["currentbet"] + self.oh["balance"]) / self.oh["bblind"]
+            print('Big Raise')
         elif 0.1 < self.oh["prwin"] - self.inv and math.isclose(0, self.oh["call"], rel_tol=1e-6) and self.gotcaught == False:
-            decision = self.oh["call"] + max(min_bet, self.oh["pot"]/2)
+            decision = (self.oh["currentbet"] + min(self.oh["balance"], self.oh["call"] + max(min_bet, self.oh["pot"]/2.0))) / self.oh["bblind"]
+            print('small raise')
             self.ibluffed = True
         elif self.oh["call"] < self.callExpectedValue():
-            decision = self.oh["call"]
-        decision = self.oh["currentbet"] + min(self.oh["balance"], decision)
+            decision = OpenHoldem.getSymbol("Call")
+            print('just calling')
         return decision
 
     def getDecision(self):
@@ -102,6 +103,5 @@ class Main:
                 decision = self.preFlopDecision()
         else:
             decision = self.postFlopDecision()
-        decision = round(decision/self.oh["bblind"])
         print(f'decision: {decision}\n')
         return decision

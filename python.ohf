@@ -63,7 +63,7 @@
 
 
 ##f$ini_function_on_my_turn##
-0
+isfinalanswer ? me_st_dec_f$dlldecision : 0
 
 
 ##f$ini_function_on_heartbeat##
@@ -98,6 +98,10 @@ dll$decision
 
 
 ##f$river##
+dll$decision
+
+
+##f$dlldecision##
 dll$decision
 
 
