@@ -63,7 +63,7 @@
 
 
 ##f$ini_function_on_my_turn##
-isfinalanswer ? me_st_dec_f$dlldecision : 0
+0
 
 
 ##f$ini_function_on_heartbeat##
@@ -77,7 +77,6 @@ isfinalanswer ? me_st_dec_f$dlldecision : 0
 ##f$debug##
 = userchair
 = AmountToCall
-= dll$random
 
 
 ##list_random_crap##
@@ -87,30 +86,18 @@ A6o KTo K8o K5o QJo Q8o Q3o JTo J5o T6o 92o 87o 85o 84o 62o 43o
 
 
 ##f$preflop##
-WHEN (me_re_dec - currentbet - call > 0) RaiseTo me_re_dec FORCE
-WHEN (me_re_dec - currentbet - call == 0) OR (call == balance AND me_re_dec > currentbet) Call FORCE
-WHEN Others Fold FORCE
+dll$decision
 
 
 ##f$flop##
-WHEN (me_re_dec - currentbet - call > 0) RaiseTo me_re_dec FORCE
-WHEN (me_re_dec - currentbet - call == 0) OR (call == balance AND me_re_dec > currentbet) Call FORCE
-WHEN Others Fold FORCE
+dll$decision
 
 
 ##f$turn##
-WHEN (me_re_dec - currentbet - call > 0) RaiseTo me_re_dec FORCE
-WHEN (me_re_dec - currentbet - call == 0) OR (call == balance AND me_re_dec > currentbet) Call FORCE
-WHEN Others Fold FORCE
+dll$decision
 
 
 ##f$river##
-WHEN (me_re_dec - currentbet - call > 0) RaiseTo me_re_dec FORCE
-WHEN (me_re_dec - currentbet - call == 0) OR (call == balance AND me_re_dec > currentbet) Call FORCE
-WHEN Others Fold FORCE
-
-
-##f$dlldecision##
 dll$decision
 
 

@@ -39,7 +39,7 @@ class Main:
         for k, v in self.oh.items():
             self.oh[k] = OpenHoldem.getSymbol(k)
             print(f'{k}: {self.oh[k]}\n')
-        self.phr = (169.0 - self.oh['handrank169'])/169.0
+        self.phr = (170.0 - self.oh['handrank169'])/169.0
         self.inv = 1.0/self.oh["nplayersplaying"]
         print(f'1/nplayers: {self.inv}\n')
         if self.oh["betround"] == 1:
@@ -102,5 +102,6 @@ class Main:
                 decision = self.preFlopDecision()
         else:
             decision = self.postFlopDecision()
+        decision = round(decision/self.oh["bblind"])
         print(f'decision: {decision}\n')
         return decision
