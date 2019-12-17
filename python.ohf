@@ -3,11 +3,11 @@
 
 
 ##f$betpot_1_1##
-me_re_dec - currentbet - call == pot ? 1 : 0
+
 
 
 ##f$betpot_1_2##
-me_re_dec - currentbet - call == pot/2 ? 1 : 0
+
 
 
 ##f$betsize##
@@ -15,15 +15,14 @@ me_re_dec - currentbet - call == pot/2 ? 1 : 0
 // OpenHoldem will auto-adapt the betsize to the casinos input-requirements.
 // Please define your tablemaps "betsizeinterpretationmethod"
 // to configure this feature.
-me_re_dec - currentbet - call > 0 ? me_re_dec : 0
 
 
 ##f$raise##
-me_re_dec - currentbet - call > 0 ? 1 : 0
+
 
 
 ##f$call##
-(me_re_dec - currentbet - call >= 0) || (call == balance AND me_re_dec > currentbet) ? 1 : 0
+
 
 
 ##f$sitin##
@@ -49,10 +48,6 @@ me_re_dec - currentbet - call > 0 ? 1 : 0
 ##f$delay##
 // Autoplayer-delay in milli-seconds
 0
-
-
-##f$shoot_replay_frame##
-1
 
 
 ##f$ini_function_on_connection##
@@ -84,5 +79,29 @@ isfinalanswer ? me_st_dec_f$dlldecision : 0
 = AmountToCall
 
 
+##list_random_crap##
+KK JJ 66 33
+A8s A3s KTs K7s K4s Q8s Q7s Q3s J8s J5s T7s 96s 94s 93s 85s 82s 63s 53s
+A6o KTo K8o K5o QJo Q8o Q3o JTo J5o T6o 92o 87o 85o 84o 62o 43o
+
+
+##f$preflop##
+dll$decision
+
+
+##f$flop##
+dll$decision
+
+
+##f$turn##
+dll$decision
+
+
+##f$river##
+dll$decision
+
+
 ##f$dlldecision##
 dll$decision
+
+
