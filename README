@@ -1,4 +1,12 @@
-To Compile:
+## Welcome to prw1326
+
+OpenHoldem opython user dll add-on
+
+### Instructions
+
+```markdown
+
+# To Compile
 
 1. Make sure you have support for c++ and mfc in visual studio
 2. Install Python 3.7 for x86
@@ -6,10 +14,12 @@ To Compile:
 	by right clicking it in the solution explorer and selecting properties
 	c++ -> Additional include directories. Defaults to C:\Python37-32\include 
 	linker -> Additional Library directories. Defaults to C:\Python37-32\libs
-3. Build
+4. Build
 
-To Run:
+## To Run
 
 1. Move user.dll, python.ohf and bot.py to Openholdem directory
 2. Load python.ohf in oh
 2. Run :)
+
+```
