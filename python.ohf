@@ -86,19 +86,19 @@ A6o KTo K8o K5o QJo Q8o Q3o JTo J5o T6o 92o 87o 85o 84o 62o 43o
 
 
 ##f$preflop##
-dll$decision
+me_re_dec
 
 
 ##f$flop##
-dll$decision
+me_re_dec
 
 
 ##f$turn##
-dll$decision
+me_re_dec
 
 
 ##f$river##
-dll$decision
+me_re_dec
 
 
 ##f$dlldecision##
