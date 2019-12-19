@@ -20,6 +20,6 @@ OpenHoldem opython user dll add-on
 
 1. Move user.dll, python.ohf and bot.py to Openholdem directory
 2. Load python.ohf in oh
-2. Run :)
+3. Run :)
 
 ```
